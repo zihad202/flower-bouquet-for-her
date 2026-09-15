@@ -1,0 +1,89 @@
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;min-height:100%;font-family:Georgia,"Times New Roman",serif}
+body{background:#120b18;color:#fff;overflow-x:hidden}
+.scene{
+  min-height:100svh; position:relative; overflow:hidden;
+  display:flex; flex-direction:column; align-items:center; justify-content:flex-end;
+  padding:20px 12px 32px;
+  background:
+    radial-gradient(circle at 18% 18%,rgba(255,188,211,.28),transparent 28%),
+    radial-gradient(circle at 82% 28%,rgba(180,139,255,.22),transparent 32%),
+    linear-gradient(145deg,#2a1729 0%,#130c19 52%,#32152d 100%);
+}
+.scene:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center bottom,rgba(255,150,198,.17),transparent 55%);pointer-events:none}
+.glow{position:absolute;border-radius:50%;filter:blur(45px);opacity:.45;pointer-events:none}
+.glow-a{width:170px;height:170px;background:#ff9fc8;left:-60px;top:22%}
+.glow-b{width:210px;height:210px;background:#9d77ff;right:-80px;top:35%}
+
+.bouquet-wrap{width:min(96vw,560px);height:min(92vw,570px);position:relative;z-index:2;display:flex;align-items:flex-end;justify-content:center}
+.bouquet{position:relative;width:100%;height:100%;transform:translateY(7%);filter:drop-shadow(0 25px 25px rgba(0,0,0,.35))}
+
+.flower{position:absolute;z-index:6;opacity:0;transform:translateY(35px) scale(.15) rotate(-8deg);transform-origin:center bottom;animation:bloom 1.15s cubic-bezier(.18,.9,.25,1.25) forwards, sway 4s ease-in-out 2.2s infinite}
+.rose{width:82px;height:82px;border-radius:50%;background:radial-gradient(circle,#ffcfdf 0 8%,#ef6fa7 20%,#d83d82 48%,#b92b68 75%,#7f204f 100%);box-shadow:inset 0 0 0 5px rgba(255,255,255,.08),0 5px 16px rgba(0,0,0,.2)}
+.rose .petal{position:absolute;inset:8px;border-radius:50%;border:7px solid rgba(255,201,221,.55);transform:rotate(var(--r)) scale(.72)}
+.rose .p1{--r:15deg}.rose .p2{--r:88deg}.rose .p3{--r:161deg}.rose .p4{--r:234deg}.rose .p5{--r:307deg}
+.rose .core{position:absolute;width:23px;height:23px;left:29px;top:29px;border-radius:50%;background:#c53676;box-shadow:inset 4px 3px 5px #ff9fc4}
+
+.lily{width:105px;height:100px}
+.lpetal{position:absolute;width:62px;height:92px;background:linear-gradient(160deg,#fff,#ffd7eb 70%,#e8a7c8);border-radius:70% 30% 70% 30%;left:22px;top:4px;transform-origin:50% 92%;box-shadow:0 3px 8px rgba(0,0,0,.16)}
+.lpetal.a{transform:rotate(0)}.lpetal.b{transform:rotate(90deg)}.lpetal.c{transform:rotate(180deg)}.lpetal.d{transform:rotate(270deg)}
+.lily-core{position:absolute;width:22px;height:22px;border-radius:50%;left:41px;top:39px;background:#f0b45d;box-shadow:0 0 0 4px rgba(255,255,255,.2)}
+
+.daisy{width:64px;height:64px;border-radius:50%;background:repeating-conic-gradient(#fff 0 12deg,#f9ddea 12deg 24deg);box-shadow:0 3px 9px rgba(0,0,0,.18)}
+.daisy:after{content:"";position:absolute;width:23px;height:23px;border-radius:50%;left:20px;top:20px;background:#f3c45b;box-shadow:0 0 0 3px #fff3c8}
+.lavender{width:55px;height:92px}
+.lavender:before{content:"";position:absolute;width:9px;height:90px;background:#5c9a67;left:25px;top:25px;border-radius:10px;transform:rotate(-8deg)}
+.lavender:after{content:"";position:absolute;width:36px;height:65px;left:11px;top:0;background:radial-gradient(circle,#9d73dc 0 30%,transparent 32%) 0 0/17px 17px}
+.carnation{width:67px;height:67px;border-radius:50%;background:radial-gradient(circle,#ffb5d2 0 12%,#e96e9d 14% 30%,#ef8fb4 31% 45%,#d65b8d 47% 68%,#bc4478 70%);filter:saturate(.9)}
+
+.stem{position:absolute;width:6px;height:250px;background:linear-gradient(#4d9a5c,#235b39);border-radius:8px;z-index:2;transform-origin:bottom;animation:growStem 1.2s ease-out forwards}
+.stem-1{left:24%;bottom:25%;transform:rotate(-18deg);height:290px}.stem-2{left:38%;bottom:25%;transform:rotate(-7deg);height:310px}.stem-3{left:58%;bottom:24%;transform:rotate(7deg);height:300px}.stem-4{left:73%;bottom:25%;transform:rotate(19deg);height:270px}
+.leaf{position:absolute;width:58px;height:27px;border-radius:100% 0 100% 0;background:linear-gradient(135deg,#75b66f,#2d6b43);z-index:3;opacity:0;animation:leafIn .7s ease-out forwards}
+.leaf-1{left:18%;bottom:47%;transform:rotate(-35deg)}.leaf-2{left:28%;bottom:57%;transform:rotate(24deg)}
+.leaf-3{left:34%;bottom:52%;transform:rotate(-30deg)}.leaf-4{left:40%;bottom:64%;transform:rotate(25deg)}
+.leaf-5{left:55%;bottom:50%;transform:rotate(-22deg)}.leaf-6{left:62%;bottom:63%;transform:rotate(34deg)}
+.leaf-7{left:69%;bottom:45%;transform:rotate(-18deg)}.leaf-8{left:75%;bottom:56%;transform:rotate(32deg)}
+
+.rose-1{left:31%;bottom:56%;animation-delay:.55s}.rose-2{left:14%;bottom:48%;transform:scale(.82);animation-delay:1.25s}
+.lily-1{left:44%;bottom:59%;animation-delay:1.9s}.daisy-1{left:9%;bottom:40%;transform:scale(.78);animation-delay:2.5s}
+.daisy-2{right:12%;bottom:43%;transform:scale(.7);animation-delay:2.85s}.lav-1{left:65%;bottom:57%;animation-delay:3.15s}
+.lav-2{left:20%;bottom:63%;transform:scale(.8);animation-delay:3.45s}.rose-3{right:18%;bottom:51%;transform:scale(.9);animation-delay:3.8s}
+.car-1{left:42%;bottom:44%;transform:scale(.72);animation-delay:4.15s}.daisy-3{right:30%;bottom:39%;transform:scale(.58);animation-delay:4.5s}
+.rose-4{left:44%;bottom:40%;transform:scale(.72);animation-delay:4.85s}.lily-2{left:24%;bottom:55%;transform:scale(.72);animation-delay:5.2s}
+
+.filler{position:absolute;width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 0 0 7px rgba(255,235,246,.25),14px 4px 0 #fff,8px -10px 0 #fff;z-index:5;opacity:0;animation:fillerIn .6s ease-out forwards}
+.f1{left:29%;bottom:47%;animation-delay:2.2s}.f2{left:51%;bottom:50%;animation-delay:2.5s}.f3{left:68%;bottom:47%;animation-delay:3s}
+.f4{left:37%;bottom:68%;animation-delay:3.5s}.f5{right:24%;bottom:59%;animation-delay:4s}.f6{left:14%;bottom:55%;animation-delay:4.5s}
+
+.wrap{position:absolute;z-index:10;bottom:1%;left:50%;transform:translateX(-50%);width:82%;height:36%;clip-path:polygon(8% 0,92% 0,100% 100%,0 100%);background:linear-gradient(120deg,#f6a8c6,#d77fae 48%,#b65f91);opacity:0;animation:wrapIn 1.1s ease-out .2s forwards}
+.wrap-front{z-index:12;background:linear-gradient(100deg,#ffd1e2,#f08fba 48%,#cb679d);clip-path:polygon(14% 0,86% 0,96% 100%,4% 100%)}
+.ribbon{position:absolute;z-index:14;bottom:0;width:22%;height:25%;background:linear-gradient(90deg,#f5a0c2,#ffcee0,#dc78a9);border-radius:8px 8px 20px 20px;opacity:0;animation:wrapIn .8s ease-out 1.05s forwards}
+.ribbon-left{left:29%;transform:rotate(14deg)}.ribbon-right{right:29%;transform:rotate(-14deg)}
+.ribbon-knot{position:absolute;z-index:15;bottom:16%;left:50%;width:58px;height:42px;transform:translateX(-50%);background:#ed91b8;border-radius:50%;opacity:0;animation:wrapIn .6s ease-out 1.15s forwards}
+.tag{position:absolute;z-index:16;bottom:7%;left:50%;transform:translateX(-50%) rotate(3deg);padding:9px 14px;background:#ffd7e5;color:#9d4771;border-radius:4px;font:600 14px Georgia;box-shadow:0 5px 10px rgba(0,0,0,.18);opacity:0;animation:tagIn .7s ease-out 1.5s forwards}.tag span{display:block;text-align:center}
+
+.message{position:relative;z-index:20;text-align:center;margin-bottom:12px;opacity:0;transform:translateY(12px);animation:messageIn 1s ease-out 5.9s forwards;text-shadow:0 2px 14px rgba(0,0,0,.4)}
+.message h1{font-size:clamp(23px,6vw,38px);font-weight:400;font-style:italic;margin:0 0 5px}.message p{font-size:clamp(19px,5vw,28px);margin:0;color:#ffc1d9;font-style:italic}.message p span{color:#ff8fbb}.sparkle{font-size:18px;color:#ffd2e4;margin-bottom:5px;animation:twinkle 1.4s ease-in-out infinite}
+#restart{position:relative;z-index:30;margin-top:18px;border:1px solid rgba(255,220,235,.35);background:rgba(255,255,255,.09);color:#ffe5ef;border-radius:999px;padding:10px 18px;font-size:14px;backdrop-filter:blur(8px);cursor:pointer}
+
+.petal{position:absolute;width:12px;height:20px;background:#ffb3cf;border-radius:100% 0 100% 0;opacity:.8;animation:fall linear infinite}
+.petal:nth-child(1){left:8%;top:-20px;animation-duration:7s}.petal:nth-child(2){left:24%;top:-40px;animation-duration:9s;animation-delay:2s}.petal:nth-child(3){left:47%;top:-30px;animation-duration:8s;animation-delay:1s}.petal:nth-child(4){left:71%;top:-50px;animation-duration:10s;animation-delay:4s}.petal:nth-child(5){left:89%;top:-30px;animation-duration:7.5s;animation-delay:3s}
+
+@keyframes bloom{0%{opacity:0;transform:translateY(35px) scale(.15) rotate(-12deg)}65%{opacity:1;transform:translateY(-5px) scale(1.08) rotate(3deg)}100%{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
+@keyframes sway{0%,100%{margin-left:0}50%{margin-left:4px}}
+@keyframes growStem{0%{transform-origin:bottom;scale:1 .05;opacity:0}100%{scale:1 1;opacity:1}}
+@keyframes leafIn{from{opacity:0;scale:0}to{opacity:1;scale:1}}
+@keyframes fillerIn{from{opacity:0;scale:0}to{opacity:.9;scale:1}}
+@keyframes wrapIn{from{opacity:0;transform:translateX(-50%) translateY(30px) scale(.85)}to{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}}
+@keyframes tagIn{from{opacity:0;transform:translateX(-50%) translateY(15px) rotate(3deg)}to{opacity:1;transform:translateX(-50%) translateY(0) rotate(3deg)}}
+@keyframes messageIn{to{opacity:1;transform:translateY(0)}}
+@keyframes twinkle{50%{transform:scale(1.35);opacity:.45}}
+@keyframes fall{0%{transform:translate(0,-30px) rotate(0);opacity:0}12%{opacity:.8}100%{transform:translate(50px,105vh) rotate(420deg);opacity:0}}
+
+@media(max-width:420px){
+  .bouquet-wrap{height:112vw}
+  .rose{width:67px;height:67px}.rose .core{width:19px;height:19px;left:24px;top:24px}
+  .lily{transform:scale(.78)}.daisy{transform:scale(.78)}
+  .rose-1{left:30%;bottom:55%}.rose-2{left:11%;bottom:46%}.rose-3{right:10%;bottom:49%}
+  .message{margin-bottom:4px}
+}
